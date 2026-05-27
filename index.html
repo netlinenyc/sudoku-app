@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sudoku Trainer — Support & Privacy</title>
+  <meta name="description" content="Support and privacy information for Sudoku Trainer. No accounts, no ads, no tracking — everything stays on your device." />
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --body: #2a2f3c;
+      --muted: #5a6072;
+      --line: #e6eaf0;
+      --accent: #2255a4;
+      --accent-soft: #eaf1fb;
+      --green: #1f7a3f;
+      --green-soft: #e6f4ec;
+      --warm: #fffaf0;
+      --warm-line: #f3e6c2;
+      --bg: #fbfaf6;
+      --card: #ffffff;
+      --shadow: 0 1px 2px rgba(20, 30, 50, 0.04), 0 8px 24px rgba(20, 30, 50, 0.06);
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--body);
+      background: var(--bg);
+      margin: 0;
+      line-height: 1.65;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 22px 80px;
+    }
+    header {
+      text-align: center;
+      padding-bottom: 24px;
+    }
+    h1 {
+      font-size: 34px;
+      font-weight: 800;
+      margin: 0 0 8px;
+      letter-spacing: -0.6px;
+      color: var(--ink);
+    }
+    .tagline {
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0 0 22px;
+    }
+    .lang-toggle {
+      display: inline-flex;
+      gap: 4px;
+      padding: 4px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+    }
+    .lang-toggle button {
+      border: 0;
+      background: transparent;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-toggle button.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Hero / privacy pledge */
+    .pledge {
+      background: linear-gradient(180deg, var(--green-soft) 0%, #fff 100%);
+      border: 1px solid #cdebd6;
+      border-radius: 20px;
+      padding: 26px 22px;
+      margin: 32px 0 36px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .pledge-badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .pledge h2 {
+      font-size: 22px;
+      margin: 0 0 8px;
+      color: var(--ink);
+    }
+    .pledge p {
+      color: var(--body);
+      font-size: 16px;
+      margin: 0 0 18px;
+    }
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      display: grid;
+      gap: 10px;
+    }
+    .checklist li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid #d8ecde;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .check {
+      flex: 0 0 22px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* Cards / sections */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 26px 24px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+    }
+    .card h2 {
+      font-size: 21px;
+      margin: 0 0 10px;
+      color: var(--ink);
+    }
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 22px 0 8px;
+      color: var(--ink);
+    }
+    .card p { margin: 0 0 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul {
+      margin: 0 0 12px;
+      padding-left: 22px;
+    }
+    .card ul li { margin-bottom: 6px; }
+
+    /* Email button */
+    .email-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: 0 6px 18px rgba(34, 85, 164, 0.25);
+      transition: transform 0.1s, box-shadow 0.15s;
+    }
+    .email-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(34, 85, 164, 0.3);
+    }
+    .email-cta:active { transform: translateY(0); }
+
+    /* FAQ */
+    .faq details {
+      border-top: 1px solid var(--line);
+      padding: 14px 0;
+    }
+    .faq details:first-of-type { border-top: 0; padding-top: 0; }
+    .faq summary {
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      padding-right: 22px;
+      position: relative;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: -2px;
+      font-size: 22px;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .faq details[open] summary::after { content: "−"; }
+    .faq summary + p { margin-top: 8px; color: var(--body); }
+
+    .note {
+      background: var(--warm);
+      border: 1px solid var(--warm-line);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 15px;
+      color: #5d4500;
+      margin: 16px 0;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .updated {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); }
+
+    .hidden { display: none; }
+
+    /* Bigger text on small screens, but never microscopic */
+    @media (max-width: 480px) {
+      body { font-size: 16.5px; }
+      h1 { font-size: 28px; }
+      .wrap { padding: 28px 16px 60px; }
+      .card { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Sudoku Trainer</h1>
+      <p class="tagline" id="tagline">Support &amp; privacy</p>
+      <div class="lang-toggle" role="tablist" aria-label="Language">
+        <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+        <button id="btn-ru" onclick="setLang('ru')">Русский</button>
+      </div>
+    </header>
+
+    <!-- ─── ENGLISH ─────────────────────────────────────────────── -->
+    <main id="lang-en">
+
+      <!-- Privacy pledge -->
+      <div class="pledge">
+        <span class="pledge-badge">Our promise</span>
+        <h2>Your privacy is the whole point.</h2>
+        <p>
+          Sudoku Trainer was built to be a quiet, private place to enjoy
+          puzzles. No one is watching. No one is collecting.
+        </p>
+        <ul class="checklist">
+          <li><span class="check">✓</span><span><strong>No personal information</strong> is collected — not your name, not your email, not anything.</span></li>
+          <li><span class="check">✓</span><span><strong>No tracking, cookies, or analytics.</strong> The app does not phone home.</span></li>
+          <li><span class="check">✓</span><span><strong>No accounts, no logins.</strong> You just open the app and play.</span></li>
+          <li><span class="check">✓</span><span><strong>No ads, ever.</strong></span></li>
+          <li><span class="check">✓</span><span><strong>Everything stays on your device.</strong> Your progress, your stats, your settings — all of it lives on your phone or tablet, and nowhere else.</span></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <section class="card">
+        <h2>Get help</h2>
+        <p>
+          Have a question, found a bug, or just want to share an idea?
+          Send a message and a real person will write back.
+        </p>
+        <p style="margin: 20px 0 8px;">
+          <a class="email-cta" href="mailto:sudoku-app@netlinenyc.com?subject=Sudoku%20Trainer%20Support">
+            ✉&nbsp; Email us
+          </a>
+        </p>
+        <p style="font-size: 14px; color: var(--muted); margin-top: 14px;">
+          Or copy this address:
+          <a href="mailto:sudoku-app@netlinenyc.com">sudoku-app@netlinenyc.com</a>
+        </p>
+
+        <div class="note">
+          To get a fast answer, please mention your device (for example
+          “iPhone 13” or “iPad Air”) and which version of the app you have.
+          You can see the version at the bottom of the main menu.
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="card faq">
+        <h2>Common questions</h2>
+
+        <details>
+          <summary>Will I see ads?</summary>
+          <p>No. There are no ads in the app, and there never will be.</p>
+        </details>
+
+        <details>
+          <summary>Does the app work without an internet connection?</summary>
+          <p>Yes. Sudoku Trainer works fully offline. Once installed, it does not need a connection for anything.</p>
+        </details>
+
+        <details>
+          <summary>Will my progress sync between my phone and my tablet?</summary>
+          <p>
+            Not automatically. Your progress lives on each device individually.
+            If you have iCloud Backup (iPhone, iPad) or Auto Backup (Android)
+            turned on, the operating system can restore your progress when you
+            set up a new device of the same kind from the backup.
+          </p>
+        </details>
+
+        <details>
+          <summary>I reinstalled the app and my progress is gone — what happened?</summary>
+          <p>
+            App data is included in your device backup only when iCloud Backup
+            (on iPhone or iPad) or Google's backup service (on Android) is
+            enabled in your device settings. If those are off, removing the
+            app removes its local data. We cannot recover it for you because
+            we never had a copy.
+          </p>
+        </details>
+
+        <details>
+          <summary>How do I reset my statistics?</summary>
+          <p>Open the app, go to Settings, and tap "Reset All Progress" at the bottom.</p>
+        </details>
+
+        <details>
+          <summary>Can I change the language?</summary>
+          <p>Yes. Open Settings inside the app and switch between English and Russian under "Language".</p>
+        </details>
+
+        <details>
+          <summary>What information do you have about me?</summary>
+          <p>Nothing. Truly nothing. We do not collect data, and there is no server that knows you exist.</p>
+        </details>
+      </section>
+
+      <!-- Privacy details -->
+      <section class="card">
+        <h2>Privacy policy</h2>
+        <p>
+          The short version is in the green box at the top of this page:
+          we don't collect anything, we don't track you, and we don't share
+          your data. The detail below is for anyone who would like a thorough
+          explanation.
+        </p>
+
+        <h3>1. What we collect</h3>
+        <p>
+          Sudoku Trainer collects no personal information of any kind. The app
+          does not ask for your name, your email, your phone number, your
+          location, your contacts, or any other personal data. There is no
+          sign-up, no log-in, no profile.
+        </p>
+
+        <h3>2. What we store</h3>
+        <p>
+          The app saves your progress, statistics, and settings on your own
+          device, using the standard storage area provided by your operating
+          system. This is the same place where most apps keep their settings.
+          It is encrypted by your device's operating system at rest.
+        </p>
+        <p>
+          We do not have a server that holds any of this data. The information
+          never leaves your device through any channel we control.
+        </p>
+
+        <h3>3. Tracking, analytics, and advertising</h3>
+        <p>
+          Sudoku Trainer does not use cookies, advertising identifiers,
+          analytics tools, crash reporters, or any other third-party tracking
+          technology. There are no advertisements anywhere in the app.
+        </p>
+
+        <h3>4. Sharing</h3>
+        <p>
+          We do not share, sell, or otherwise transmit any user data, because
+          we do not have any user data to share. There are no partners,
+          advertisers, or third parties involved.
+        </p>
+
+        <h3>5. Device backups</h3>
+        <p>
+          If you have iCloud Backup turned on (iPhone, iPad) or Auto Backup
+          turned on (Android), your operating system may include the local app
+          data in your encrypted device backup. Those backups are handled
+          entirely by Apple or Google under their own terms and encryption.
+          Sudoku Trainer does not have access to your backups.
+        </p>
+
+        <h3>6. Children</h3>
+        <p>
+          Sudoku Trainer is appropriate for all ages and is rated 4+. Because
+          the app does not collect any information from anyone, it also does
+          not collect information from children. We comply with the Children's
+          Online Privacy Protection Act (COPPA) and similar regulations.
+        </p>
+
+        <h3>7. Your rights</h3>
+        <p>
+          Because we hold no information about you, there is nothing to
+          request, correct, or delete on our side. If you want to erase the
+          local data on your device, you can do that at any time from the
+          app's Settings → "Reset All Progress" or by uninstalling the app.
+        </p>
+
+        <h3>8. Changes to this policy</h3>
+        <p>
+          If this policy ever changes, the updated version will appear on this
+          page with a new "last updated" date below. There is no separate
+          notification because we have no way to contact you.
+        </p>
+
+        <h3>9. Contact</h3>
+        <p>
+          Questions about this policy? Write to
+          <a href="mailto:sudoku-app@netlinenyc.com">sudoku-app@netlinenyc.com</a>.
+        </p>
+
+        <p class="updated">Last updated: 26 May 2026.</p>
+      </section>
+    </main>
+
+    <!-- ─── RUSSIAN ─────────────────────────────────────────────── -->
+    <main id="lang-ru" class="hidden">
+
+      <!-- Privacy pledge -->
+      <div class="pledge">
+        <span class="pledge-badge">Наше обещание</span>
+        <h2>Конфиденциальность — это главное.</h2>
+        <p>
+          «Судоку Тренер» создан как спокойное и приватное место, где можно
+          просто решать головоломки. Никто не наблюдает. Никто ничего не собирает.
+        </p>
+        <ul class="checklist">
+          <li><span class="check">✓</span><span><strong>Никакая личная информация</strong> не собирается — ни имя, ни электронная почта, ничего.</span></li>
+          <li><span class="check">✓</span><span><strong>Никаких трекеров, файлов cookie или аналитики.</strong> Приложение никуда не отправляет данные.</span></li>
+          <li><span class="check">✓</span><span><strong>Никаких аккаунтов и регистраций.</strong> Просто откройте приложение и играйте.</span></li>
+          <li><span class="check">✓</span><span><strong>Никакой рекламы.</strong> Никогда.</span></li>
+          <li><span class="check">✓</span><span><strong>Все данные остаются на вашем устройстве.</strong> Ваш прогресс, статистика и настройки хранятся только на телефоне или планшете и больше нигде.</span></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <section class="card">
+        <h2>Поддержка</h2>
+        <p>
+          Возник вопрос, нашли ошибку или хотите поделиться идеей?
+          Напишите нам — ответит живой человек.
+        </p>
+        <p style="margin: 20px 0 8px;">
+          <a class="email-cta" href="mailto:sudoku-app@netlinenyc.com?subject=Поддержка%20Судоку%20Тренер">
+            ✉&nbsp; Написать письмо
+          </a>
+        </p>
+        <p style="font-size: 14px; color: var(--muted); margin-top: 14px;">
+          Или скопируйте адрес:
+          <a href="mailto:sudoku-app@netlinenyc.com">sudoku-app@netlinenyc.com</a>
+        </p>
+
+        <div class="note">
+          Чтобы мы могли ответить быстрее, пожалуйста, укажите ваше устройство
+          (например, «iPhone 13» или «iPad Air») и версию приложения. Версию
+          можно увидеть внизу главного меню.
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="card faq">
+        <h2>Частые вопросы</h2>
+
+        <details>
+          <summary>Будет ли в приложении реклама?</summary>
+          <p>Нет. Рекламы в приложении нет и не будет.</p>
+        </details>
+
+        <details>
+          <summary>Работает ли приложение без интернета?</summary>
+          <p>Да. «Судоку Тренер» полностью работает офлайн. После установки интернет не нужен ни для чего.</p>
+        </details>
+
+        <details>
+          <summary>Синхронизируется ли прогресс между телефоном и планшетом?</summary>
+          <p>
+            Автоматически — нет. Прогресс хранится на каждом устройстве
+            отдельно. Если на iPhone или iPad включено «Резервное копирование
+            iCloud», а на Android — Auto Backup, операционная система может
+            восстановить прогресс при настройке нового устройства того же
+            типа из резервной копии.
+          </p>
+        </details>
+
+        <details>
+          <summary>Я переустановил приложение, и прогресс пропал. Что случилось?</summary>
+          <p>
+            Данные приложения попадают в резервную копию устройства только
+            если в настройках включено «Резервное копирование iCloud» (на
+            iPhone и iPad) или сервис резервного копирования Google (на
+            Android). Если они выключены, удаление приложения убирает и его
+            локальные данные. Мы не можем их восстановить, потому что у нас
+            никогда не было копии.
+          </p>
+        </details>
+
+        <details>
+          <summary>Как сбросить статистику?</summary>
+          <p>Откройте приложение, перейдите в «Настройки» и внизу нажмите «Сбросить весь прогресс».</p>
+        </details>
+
+        <details>
+          <summary>Можно ли изменить язык?</summary>
+          <p>Да. В разделе «Настройки» внутри приложения можно переключаться между английским и русским в пункте «Язык».</p>
+        </details>
+
+        <details>
+          <summary>Какие у вас есть данные обо мне?</summary>
+          <p>Никаких. Мы не собираем данные, и нет сервера, который знал бы о вашем существовании.</p>
+        </details>
+      </section>
+
+      <!-- Privacy details -->
+      <section class="card">
+        <h2>Политика конфиденциальности</h2>
+        <p>
+          Краткая версия — в зелёной рамке наверху страницы: мы ничего не
+          собираем, не следим за вами и не передаём ваши данные. Ниже —
+          подробное описание для тех, кому нужно полное объяснение.
+        </p>
+
+        <h3>1. Что мы собираем</h3>
+        <p>
+          «Судоку Тренер» не собирает никакой личной информации. Приложение
+          не запрашивает имя, электронную почту, номер телефона, ваше
+          местоположение, контакты или любые другие персональные данные.
+          Нет регистрации, нет входа в систему, нет профиля.
+        </p>
+
+        <h3>2. Что мы храним</h3>
+        <p>
+          Приложение сохраняет ваш прогресс, статистику и настройки локально
+          на вашем устройстве в стандартной области хранения, предоставляемой
+          операционной системой. Это то же место, где большинство приложений
+          держат свои настройки. В состоянии покоя данные зашифрованы
+          операционной системой устройства.
+        </p>
+        <p>
+          У нас нет сервера, на котором хранятся эти данные. Информация не
+          покидает устройство ни по одному каналу, который мы контролируем.
+        </p>
+
+        <h3>3. Трекинг, аналитика и реклама</h3>
+        <p>
+          «Судоку Тренер» не использует файлы cookie, рекламные
+          идентификаторы, инструменты аналитики, отчёты о сбоях и любые
+          другие сторонние технологии отслеживания. В приложении нет рекламы.
+        </p>
+
+        <h3>4. Передача данных</h3>
+        <p>
+          Мы не передаём, не продаём и иным образом не предоставляем
+          пользовательские данные, потому что у нас их попросту нет. Никаких
+          партнёров, рекламодателей или третьих сторон не задействовано.
+        </p>
+
+        <h3>5. Резервные копии устройства</h3>
+        <p>
+          Если на iPhone или iPad включено «Резервное копирование iCloud», а
+          на Android — Auto Backup, операционная система может включить
+          локальные данные приложения в зашифрованную резервную копию
+          устройства. Эти копии полностью находятся в ведении Apple или
+          Google и регулируются их условиями и шифрованием. «Судоку Тренер»
+          не имеет доступа к вашим резервным копиям.
+        </p>
+
+        <h3>6. Дети</h3>
+        <p>
+          «Судоку Тренер» подходит для всех возрастов и имеет рейтинг 4+.
+          Поскольку приложение никогда ни у кого не собирает информацию, оно
+          не собирает её и у детей. Мы соблюдаем требования Закона о защите
+          конфиденциальности детей в интернете (COPPA) и аналогичных норм.
+        </p>
+
+        <h3>7. Ваши права</h3>
+        <p>
+          Поскольку у нас нет никакой информации о вас, нет и того, что можно
+          было бы запросить, исправить или удалить на нашей стороне. Если вы
+          хотите стереть локальные данные на устройстве, это можно сделать в
+          любой момент: «Настройки» → «Сбросить весь прогресс» в приложении
+          или удаление приложения с устройства.
+        </p>
+
+        <h3>8. Изменения политики</h3>
+        <p>
+          Если эта политика когда-либо изменится, обновлённая версия появится
+          на этой странице с новой датой «последнее обновление» ниже.
+          Отдельных уведомлений не будет: у нас нет способа связаться с вами.
+        </p>
+
+        <h3>9. Контакты</h3>
+        <p>
+          Вопросы по этой политике? Пишите на
+          <a href="mailto:sudoku-app@netlinenyc.com">sudoku-app@netlinenyc.com</a>.
+        </p>
+
+        <p class="updated">Последнее обновление: 26 мая 2026 года.</p>
+      </section>
+    </main>
+
+    <footer>
+      &copy; 2026 Sudoku Trainer ·
+      <a href="mailto:sudoku-app@netlinenyc.com">sudoku-app@netlinenyc.com</a>
+    </footer>
+  </div>
+
+  <script>
+    function setLang(code) {
+      var en = document.getElementById('lang-en');
+      var ru = document.getElementById('lang-ru');
+      var btnEn = document.getElementById('btn-en');
+      var btnRu = document.getElementById('btn-ru');
+      var tagline = document.getElementById('tagline');
+      if (code === 'ru') {
+        en.classList.add('hidden');
+        ru.classList.remove('hidden');
+        btnEn.classList.remove('active');
+        btnRu.classList.add('active');
+        document.documentElement.lang = 'ru';
+        tagline.textContent = 'Поддержка и конфиденциальность';
+        document.title = 'Судоку Тренер — Поддержка и конфиденциальность';
+      } else {
+        ru.classList.add('hidden');
+        en.classList.remove('hidden');
+        btnRu.classList.remove('active');
+        btnEn.classList.add('active');
+        document.documentElement.lang = 'en';
+        tagline.textContent = 'Support & privacy';
+        document.title = 'Sudoku Trainer — Support & Privacy';
+      }
+    }
+    // Honour browser language on first load.
+    if ((navigator.language || '').toLowerCase().indexOf('ru') === 0) {
+      setLang('ru');
+    }
+  </script>
+</body>
+</html>
